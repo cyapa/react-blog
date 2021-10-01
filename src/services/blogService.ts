@@ -20,6 +20,18 @@ const addBlog = async (unsavedBlog:UnsavedBlog): Promise<APIResult<string>> => {
   }
 };
 
+const editBlog = async (editedBlog:UnsavedBlog): Promise<APIResult<Readonly<Blog>>> => {
+  try {
+    return await axios.patch("",editedBlog);
+  } catch {
+    return {
+      data: null,
+      error: { message: _getErrorMessage() },
+    };
+  }
+};
+
+
 const getBlogs = async (): Promise<APIResult<ReadonlyArray<Blog>>> => {
   try {
     return await axios.get("");
@@ -34,5 +46,6 @@ const getBlogs = async (): Promise<APIResult<ReadonlyArray<Blog>>> => {
 
 export default {
   addBlog,
+  editBlog,
   getBlogs,
 };
