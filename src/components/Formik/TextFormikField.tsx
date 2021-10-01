@@ -1,11 +1,5 @@
 import React, { ReactElement } from "react";
-import {
-  ErrorMessage,
-  Field,
-  FieldAttributes,
-  FieldProps,
-  getIn,
-} from "formik";
+import { Field, FieldAttributes, FieldProps, getIn } from "formik";
 
 type TextFormikFieldProps = Readonly<{
   label: string;
@@ -16,21 +10,14 @@ const TextField = ({
   field,
   form,
 }: TextFormikFieldProps & FieldProps): ReactElement => {
-  const isError =
+  const validationError =
     getIn(form.touched, field.name) && getIn(form.errors, field.name);
-
   return (
     <div>
       <div>
         <input type="text" placeholder={label} {...field} />
       </div>
-      {isError && (
-        <div>
-          <ErrorMessage name={field.name}>
-            {getIn(form.errors, field.name)}
-          </ErrorMessage>
-        </div>
-      )}
+      {!!validationError && <div>{validationError}</div>}
     </div>
   );
 };
