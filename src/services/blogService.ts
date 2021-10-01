@@ -11,7 +11,7 @@ const _getErrorMessage = (): string => {
 
 const addBlog = async (unsavedBlog:UnsavedBlog): Promise<APIResult<string>> => {
   try {
-    return await axios.post("",unsavedBlog);
+    return await axios.post(``,unsavedBlog);
   } catch {
     return {
       data: null,
@@ -22,7 +22,18 @@ const addBlog = async (unsavedBlog:UnsavedBlog): Promise<APIResult<string>> => {
 
 const editBlog = async (editedBlog:UnsavedBlog): Promise<APIResult<Readonly<Blog>>> => {
   try {
-    return await axios.patch("",editedBlog);
+    return await axios.patch(``,editedBlog);
+  } catch {
+    return {
+      data: null,
+      error: { message: _getErrorMessage() },
+    };
+  }
+};
+
+const deleteBlog = async (blogId:string): Promise<APIResult<null>> => {
+  try {
+    return await axios.delete(`/${blogId}`);
   } catch {
     return {
       data: null,
@@ -34,7 +45,7 @@ const editBlog = async (editedBlog:UnsavedBlog): Promise<APIResult<Readonly<Blog
 
 const getBlogs = async (): Promise<APIResult<ReadonlyArray<Blog>>> => {
   try {
-    return await axios.get("");
+    return await axios.get(``);
   } catch {
     return {
       data: null,
@@ -47,5 +58,6 @@ const getBlogs = async (): Promise<APIResult<ReadonlyArray<Blog>>> => {
 export default {
   addBlog,
   editBlog,
+  deleteBlog,
   getBlogs,
 };
