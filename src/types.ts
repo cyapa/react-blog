@@ -10,4 +10,3 @@ export type UnsavedBlog = Readonly<{
   title: string;
   content: string;
 }>;
-
