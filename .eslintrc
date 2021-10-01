@@ -36,7 +36,7 @@
         "no-underscore-dangle": ["off"],
         "no-unused-expressions": ["error", {"allowShortCircuit": false}],
         "no-unused-vars": ["error"],
-        "no-console": ["error"],
+        "no-console": ["warn"],
         "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
         "react/state-in-constructor": ["error", "always"],
         "simple-import-sort/exports": "error",
