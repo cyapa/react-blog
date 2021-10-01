@@ -17,7 +17,7 @@ const TextField = ({
   form,
 }: TextFormikFieldProps & FieldProps): ReactElement => {
   const isError =
-    getIn(form.touched, field.name) & getIn(form.errors, field.name);
+    getIn(form.touched, field.name) && getIn(form.errors, field.name);
 
   return (
     <div>

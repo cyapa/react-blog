@@ -1,6 +1,7 @@
 import React, { ReactElement } from "react";
 import { Form, Formik } from "formik";
 
+import Button from "../../components/Button";
 import TextFormikField from "../../components/Formik/TextFormikField";
 import blogSchema, { INITIAL_VALUES } from "../../validators/blogSchema";
 
@@ -18,6 +19,7 @@ const BlogCreate = (): ReactElement => {
         <Form>
           <TextFormikField name="title" label="Blog Title" />
           <TextFormikField name="content" label="Blog content" />
+          <Button type="submit" label="Add" />
         </Form>
       </div>
     </Formik>
