@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import BlogService from "../services/BlogService";
 import type { Blog } from "../types";
 
-const useBlogs = (): Readonly<{
+const useBlog = (): Readonly<{
   blogs: ReadonlyArray<Blog>;
 }> => {
   const [blogs, setBlogs] = useState<ReadonlyArray<Blog>>([]);
@@ -24,4 +24,4 @@ const useBlogs = (): Readonly<{
   return { blogs };
 };
 
-export default useBlogs;
+export default useBlog;

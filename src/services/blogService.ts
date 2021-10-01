@@ -46,7 +46,7 @@ const deleteBlog = async (blogId: string): Promise<APIResult<null>> => {
 
 const getBlogs = async (): Promise<APIResult<ReadonlyArray<Blog>>> => {
   try {
-    return await axios.get(``);
+    return await axios.get("https://testapi");
   } catch {
     return {
       data: null,
