@@ -1,0 +1,65 @@
+{
+    "extends": [
+        "plugin:@typescript-eslint/recommended",
+        "plugin:prettier/recommended",
+        "plugin:react/recommended",
+        "plugin:react-hooks/recommended",
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "project": "./tsconfig.json"
+    },
+    "plugins": [
+        "@typescript-eslint",
+        "import",
+        "react",
+        "simple-import-sort"
+    ],
+    "rules": {
+        "@typescript-eslint/naming-convention": ["error", {
+            "selector": "default",
+            "format": ["camelCase", "UPPER_CASE", "PascalCase"],
+            "leadingUnderscore": "allow"
+        }],
+        "@typescript-eslint/no-unused-vars": ["error"],
+        "curly": ["error"],
+        "eqeqeq": ["error", "always", {"null": "ignore"}],
+        "import/first": "error",
+        "import/newline-after-import": "error",
+        "import/no-duplicates": "error",
+        "import/no-useless-path-segments": ["error", { "noUselessIndex": true }],
+        "no-underscore-dangle": ["off"],
+        "no-unused-expressions": ["error", {"allowShortCircuit": false}],
+        "no-unused-vars": ["error"],
+        "no-console": ["error"],
+        "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
+        "react/state-in-constructor": ["error", "always"],
+        "simple-import-sort/exports": "error",
+        "simple-import-sort/imports": ["error", {
+            "groups": [
+                [
+                    // React first
+                    "^react$|react-dom",
+                    // Things that start with a letter (or digit or underscore), or `@` followed by a letter
+                    "^@?\\w"
+                ],
+                // Side effect imports
+                ["^\\u0000"],
+                // Relative imports.
+                ["^\\."],
+                // for scss imports.
+                ["^.+\\.s?css$"]
+            ]
+        }]
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    }
+}
