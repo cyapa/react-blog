@@ -1,10 +1,23 @@
 import axios from "axios";
 
-import { Blog } from "../types";
+import { Blog, UnsavedBlog } from "../types";
 import { APIResult } from "./types";
 
 const _getErrorMessage = (): string => {
   return "Error in blogService";
+};
+
+
+
+const addBlog = async (unsavedBlog:UnsavedBlog): Promise<APIResult<string>> => {
+  try {
+    return await axios.post("",unsavedBlog);
+  } catch {
+    return {
+      data: null,
+      error: { message: _getErrorMessage() },
+    };
+  }
 };
 
 const getBlogs = async (): Promise<APIResult<ReadonlyArray<Blog>>> => {
@@ -18,6 +31,8 @@ const getBlogs = async (): Promise<APIResult<ReadonlyArray<Blog>>> => {
   }
 };
 
+
 export default {
+  addBlog,
   getBlogs,
 };

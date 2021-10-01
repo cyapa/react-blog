@@ -5,3 +5,9 @@ export type Blog = Readonly<{
   ctime: Date;
   mtime: Date;
 }>;
+
+export type UnsavedBlog = Readonly<{
+  title: string;
+  content: string;
+}>;
+
