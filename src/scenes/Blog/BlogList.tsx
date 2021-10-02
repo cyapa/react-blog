@@ -9,7 +9,7 @@ type BlogPostProps = Readonly<{
 
 const BlogList = ({ blogs }: BlogPostProps): ReactElement => {
   return (
-    <div>
+    <div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
       <div>Blogs will appear below</div>
       <div>
         {blogs.map((blog: Blog) => (

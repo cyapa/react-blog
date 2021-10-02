@@ -19,12 +19,18 @@ const BlogCreate = ({ onCancel }: BlogCreateProps): ReactElement => {
       validationSchema={blogSchema}
       initialValues={INITIAL_VALUES}
     >
-      <div>
+      <div className="pl-5">
         <Form>
-          <TextFormikField name="title" label="Blog Title" />
-          <TextFormikField name="content" label="Blog content" />
-          <Button type="submit" label="Add" />
-          <Button type="button" label="Cancel" onClick={onCancel} />
+          <div className="my-5">
+            <TextFormikField name="title" label="Blog Title" />
+          </div>
+          <div className="my-5">
+            <TextFormikField name="content" label="Blog content" />
+          </div>
+          <div className="my-5">
+            <Button type="submit" label="Add" />
+            <Button type="button" label="Cancel" onClick={onCancel} />
+          </div>
         </Form>
       </div>
     </Formik>

@@ -22,18 +22,22 @@ const BlogPage = (): ReactElement => {
   };
 
   return (
-    <div className="grid grid-cols-2 gap-3">
-      <div>
-        <Button type="button" label="Create" onClick={onAddClick} />
+    <div className="grid grid-cols-2 gap-4">
+      <div className="">
+        <div className="mb-5">
+          <Button type="button" label="Create" onClick={onAddClick} />
+        </div>
+
+        {actionType === "blog_add" && (
+          <div className="border-2 border-gray-400">
+            <BlogCreate onCancel={onCancelClick} />
+          </div>
+        )}
       </div>
-      <div>
+
+      <div className="mb-5">
         <BlogList blogs={blogs} />
       </div>
-      {actionType === "blog_add" && (
-        <div>
-          <BlogCreate onCancel={onCancelClick} />
-        </div>
-      )}
     </div>
   );
 };
