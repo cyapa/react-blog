@@ -8,7 +8,7 @@ import BlogList from "./BlogList";
 type ActionType = "blog_add" | "blog_delete";
 
 const BlogPage = (): ReactElement => {
-  const { blogs, isLoading } = useBlog();
+  const { blogs, isLoading, addBlog } = useBlog();
   const [actionType, setActionType] = useState<ActionType | undefined>(
     undefined
   );
@@ -32,7 +32,9 @@ const BlogPage = (): ReactElement => {
           />
         </div>
 
-        {actionType === "blog_add" && <BlogCreate onCancel={onCancelClick} />}
+        {actionType === "blog_add" && (
+          <BlogCreate onCancel={onCancelClick} onSubmit={addBlog} />
+        )}
       </div>
 
       <div className="my-5">

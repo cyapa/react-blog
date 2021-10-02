@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 
 import BlogService from "../services/BlogService";
-import type { Blog } from "../types";
+import type { Blog, UnsavedBlog } from "../types";
 
 const useBlog = (): Readonly<{
   blogs: ReadonlyArray<Blog>;
   isLoading: boolean;
+  addBlog: (unsavedBlog: UnsavedBlog) => Promise<void>;
 }> => {
   const [blogs, setBlogs] = useState<ReadonlyArray<Blog>>([]);
   const [loadingBlogs, setLoadingBlogs] = useState(true);
@@ -38,7 +39,24 @@ const useBlog = (): Readonly<{
     fetchBlogs();
   }, []);
 
-  return { blogs, isLoading: loadingBlogs };
+  const addBlog = async (unsavedBlog: UnsavedBlog): Promise<void> => {
+    const { data } = await BlogService.addBlog(unsavedBlog);
+    if (!data) {
+      return;
+    }
+    setBlogs([
+      ...blogs,
+      {
+        id: data,
+        title: unsavedBlog.title,
+        content: unsavedBlog.content,
+        ctime: new Date(),
+        mtime: new Date(),
+      },
+    ]);
+  };
+
+  return { blogs, isLoading: loadingBlogs, addBlog };
 };
 
 export default useBlog;

@@ -11,7 +11,7 @@ const addBlog = async (
   unsavedBlog: UnsavedBlog
 ): Promise<APIResult<string>> => {
   try {
-    return await axios.post(``, unsavedBlog);
+    return await axios.post(`https://test-create-api`, unsavedBlog);
   } catch {
     return {
       data: null,
@@ -24,7 +24,7 @@ const editBlog = async (
   editedBlog: UnsavedBlog
 ): Promise<APIResult<Readonly<Blog>>> => {
   try {
-    return await axios.patch(``, editedBlog);
+    return await axios.patch(`https://test-edit-api`, editedBlog);
   } catch {
     return {
       data: null,
@@ -35,7 +35,7 @@ const editBlog = async (
 
 const deleteBlog = async (blogId: string): Promise<APIResult<null>> => {
   try {
-    return await axios.delete(`/${blogId}`);
+    return await axios.delete(`https://test-delete-api/${blogId}`);
   } catch {
     return {
       data: null,
@@ -46,7 +46,7 @@ const deleteBlog = async (blogId: string): Promise<APIResult<null>> => {
 
 const getBlogs = async (): Promise<APIResult<ReadonlyArray<Blog>>> => {
   try {
-    return await axios.get("https://testapi");
+    return await axios.get("https://test-get-api");
   } catch {
     return {
       data: null,

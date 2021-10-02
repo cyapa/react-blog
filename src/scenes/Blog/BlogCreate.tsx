@@ -3,16 +3,15 @@ import { Form, Formik } from "formik";
 
 import Button from "../../components/Button";
 import TextFormikField from "../../components/Formik/TextFormikField";
+import { UnsavedBlog } from "../../types";
 import blogSchema, { INITIAL_VALUES } from "../../validators/blogSchema";
 
 type BlogCreateProps = Readonly<{
+  onSubmit: (unsavedBlog: UnsavedBlog) => Promise<void>;
   onCancel: () => void;
 }>;
 
-const BlogCreate = ({ onCancel }: BlogCreateProps): ReactElement => {
-  const onSubmit = () => {
-    console.log("Submit the form");
-  };
+const BlogCreate = ({ onCancel, onSubmit }: BlogCreateProps): ReactElement => {
   return (
     <Formik
       onSubmit={onSubmit}
