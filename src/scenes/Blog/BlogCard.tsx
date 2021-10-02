@@ -24,7 +24,9 @@ const BlogCard = ({ blog }: BlogCardProps): ReactElement => {
           <span className="text-base text-pink-500 hover:text-pink-700">
             {blog.title}
           </span>
-          <p>{blog.content}</p>
+          <p className="pt-3 text-base leading-6 space-y-4 text-gray-500">
+            {blog.content}
+          </p>
         </div>
         <div className="pt-3 grid grid-cols-2 gap-2 my-5 text-base text-gray-700">
           <div>
