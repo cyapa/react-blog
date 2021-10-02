@@ -5,9 +5,10 @@ import type { Blog } from "../types";
 
 const useBlog = (): Readonly<{
   blogs: ReadonlyArray<Blog>;
+  isLoading: boolean;
 }> => {
   const [blogs, setBlogs] = useState<ReadonlyArray<Blog>>([]);
-
+  const [loadingBlogs, setLoadingBlogs] = useState(true);
   useEffect(() => {
     const fetchBlogs = async (): Promise<void> => {
       const { data } = await BlogService.getBlogs();
@@ -31,12 +32,13 @@ const useBlog = (): Readonly<{
           },
         ]);
       }
+      setLoadingBlogs(false);
     };
 
     fetchBlogs();
   }, []);
 
-  return { blogs };
+  return { blogs, isLoading: loadingBlogs };
 };
 
 export default useBlog;

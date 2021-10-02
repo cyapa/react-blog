@@ -8,7 +8,7 @@ import BlogList from "./BlogList";
 type ActionType = "blog_add" | "blog_delete";
 
 const BlogPage = (): ReactElement => {
-  const { blogs } = useBlog();
+  const { blogs, isLoading } = useBlog();
   const [actionType, setActionType] = useState<ActionType | undefined>(
     undefined
   );
@@ -36,7 +36,7 @@ const BlogPage = (): ReactElement => {
       </div>
 
       <div className="my-5">
-        <BlogList blogs={blogs} />
+        {!isLoading ? <BlogList blogs={blogs} /> : "Loading..."}
       </div>
     </div>
   );
