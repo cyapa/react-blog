@@ -19,7 +19,7 @@ const BlogCreate = ({ onCancel }: BlogCreateProps): ReactElement => {
       validationSchema={blogSchema}
       initialValues={INITIAL_VALUES}
     >
-      <div className="border-2 border-gray-200 my-5">
+      <div className="border-2 border-gray-200 my-3">
         <Form>
           <div className="my-5">
             <TextFormikField name="title" label="Blog Title*" />

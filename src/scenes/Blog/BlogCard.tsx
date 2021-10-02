@@ -1,6 +1,7 @@
 import React, { ReactElement } from "react";
 import styled from "styled-components";
 
+import Button from "../../components/Button";
 import { Blog } from "../../types";
 
 const StyledBlog = styled.div`
@@ -19,11 +20,19 @@ type BlogCardProps = Readonly<{
 const BlogCard = ({ blog }: BlogCardProps): ReactElement => {
   return (
     <StyledBlog>
-      <div className="divide-y divide-gray-400">
+      <div className="">
+        <div className="grid grid-cols-2  grid-rows-3 relative ">
+          <div>
+            <span className="text-base text-pink-500 hover:text-pink-700">
+              {blog.title}
+            </span>
+          </div>
+
+          <div className="absolute  w-24 top-0 right-0">
+            <Button type="button" label="Delete" />
+          </div>
+        </div>
         <div>
-          <span className="text-base text-pink-500 hover:text-pink-700">
-            {blog.title}
-          </span>
           <p className="pt-3 text-base leading-6 space-y-4 text-gray-500">
             {blog.content}
           </p>
