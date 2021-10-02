@@ -15,9 +15,14 @@ const StyledBlog = styled.div`
 
 type BlogCardProps = Readonly<{
   blog: Blog;
+  removeBlog: (blogId: string) => Promise<void>;
 }>;
 
-const BlogCard = ({ blog }: BlogCardProps): ReactElement => {
+const BlogCard = ({ blog, removeBlog }: BlogCardProps): ReactElement => {
+  const onDeleteClick = async (): Promise<void> => {
+    await removeBlog(blog.id);
+  };
+
   return (
     <StyledBlog>
       <div className="">
@@ -29,7 +34,7 @@ const BlogCard = ({ blog }: BlogCardProps): ReactElement => {
           </div>
 
           <div className="absolute  w-24 top-0 right-0">
-            <Button type="button" label="Delete" />
+            <Button type="button" label="Delete" onClick={onDeleteClick} />
           </div>
         </div>
         <div>

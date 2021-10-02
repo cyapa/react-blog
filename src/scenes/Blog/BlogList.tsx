@@ -5,9 +5,10 @@ import BlogCard from "./BlogCard";
 
 type BlogPostProps = Readonly<{
   blogs: ReadonlyArray<Blog>;
+  removeBlog: (blogId: string) => Promise<void>;
 }>;
 
-const BlogList = ({ blogs }: BlogPostProps): ReactElement => {
+const BlogList = ({ blogs, removeBlog }: BlogPostProps): ReactElement => {
   return (
     <div className="">
       <div className="divide-y divide-gray-400">
@@ -19,7 +20,7 @@ const BlogList = ({ blogs }: BlogPostProps): ReactElement => {
           {blogs.length === 0 && <div>No blogs are posted</div>}
           {blogs.map((blog: Blog) => (
             <div key={blog.id}>
-              <BlogCard blog={blog} />
+              <BlogCard blog={blog} removeBlog={removeBlog} />
             </div>
           ))}
         </div>

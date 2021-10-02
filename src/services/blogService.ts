@@ -33,7 +33,7 @@ const editBlog = async (
   }
 };
 
-const deleteBlog = async (blogId: string): Promise<APIResult<null>> => {
+const removeBlog = async (blogId: string): Promise<APIResult<null>> => {
   try {
     return await axios.delete(`https://test-delete-api/${blogId}`);
   } catch {
@@ -58,6 +58,6 @@ const getBlogs = async (): Promise<APIResult<ReadonlyArray<Blog>>> => {
 export default {
   addBlog,
   editBlog,
-  deleteBlog,
+  removeBlog,
   getBlogs,
 };

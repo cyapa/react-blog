@@ -7,6 +7,7 @@ const useBlog = (): Readonly<{
   blogs: ReadonlyArray<Blog>;
   isLoading: boolean;
   addBlog: (unsavedBlog: UnsavedBlog) => Promise<void>;
+  removeBlog: (blogId: string) => Promise<void>;
 }> => {
   const [blogs, setBlogs] = useState<ReadonlyArray<Blog>>([]);
   const [loadingBlogs, setLoadingBlogs] = useState(true);
@@ -56,7 +57,15 @@ const useBlog = (): Readonly<{
     ]);
   };
 
-  return { blogs, isLoading: loadingBlogs, addBlog };
+  const removeBlog = async (blogId: string): Promise<void> => {
+    const { data } = await BlogService.removeBlog(blogId);
+    if (!data) {
+      return;
+    }
+    setBlogs([...blogs].filter((blog) => blog.id !== blogId));
+  };
+
+  return { blogs, isLoading: loadingBlogs, addBlog, removeBlog };
 };
 
 export default useBlog;
