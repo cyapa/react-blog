@@ -9,14 +9,20 @@ type BlogPostProps = Readonly<{
 
 const BlogList = ({ blogs }: BlogPostProps): ReactElement => {
   return (
-    <div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
-      <div>Blogs will appear below</div>
-      <div>
-        {blogs.map((blog: Blog) => (
-          <div key={blog.id}>
-            <BlogCard blog={blog} />
-          </div>
-        ))}
+    <div className="text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+      <div className="divide-y divide-gray-400">
+        <div className="">
+          <p>{`Number of blogs posted : ${blogs.length}`}</p>
+        </div>
+
+        <div className="my-5 py-5 tt">
+          {blogs.length === 0 && <div>No blogs are posted</div>}
+          {blogs.map((blog: Blog) => (
+            <div key={blog.id}>
+              <BlogCard blog={blog} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

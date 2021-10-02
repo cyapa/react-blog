@@ -23,19 +23,19 @@ const BlogPage = (): ReactElement => {
 
   return (
     <div className="grid grid-cols-2 gap-4">
-      <div className="">
-        <div className="mb-5">
+      <div className="my-5">
+        <div className="">
           <Button type="button" label="Create" onClick={onAddClick} />
         </div>
 
         {actionType === "blog_add" && (
-          <div className="border-2 border-gray-400">
+          <div className="border-2 border-gray-200">
             <BlogCreate onCancel={onCancelClick} />
           </div>
         )}
       </div>
 
-      <div className="mb-5">
+      <div className="my-5">
         <BlogList blogs={blogs} />
       </div>
     </div>
