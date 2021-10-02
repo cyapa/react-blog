@@ -1,8 +1,13 @@
 import React, { ReactElement } from "react";
+import styled from "styled-components";
 
 import Button from "../../components/Button";
 import { Blog } from "../../types";
 import BlogCard from "./BlogCard";
+
+const StyledBlogList = styled.div`
+  width: 50%;
+`;
 
 type BlogPostProps = Readonly<{
   blogs: ReadonlyArray<Blog>;
@@ -10,7 +15,7 @@ type BlogPostProps = Readonly<{
 
 const BlogList = ({ blogs }: BlogPostProps): ReactElement => {
   return (
-    <div>
+    <StyledBlogList>
       This is the Blog List
       <div>
         <Button type="button" label="Create" />
@@ -22,7 +27,7 @@ const BlogList = ({ blogs }: BlogPostProps): ReactElement => {
           </div>
         ))}
       </div>
-    </div>
+    </StyledBlogList>
   );
 };
 
