@@ -5,7 +5,11 @@ import Button from "../../components/Button";
 import TextFormikField from "../../components/Formik/TextFormikField";
 import blogSchema, { INITIAL_VALUES } from "../../validators/blogSchema";
 
-const BlogCreate = (): ReactElement => {
+type BlogCreateProps = Readonly<{
+  onCancel: () => void;
+}>;
+
+const BlogCreate = ({ onCancel }: BlogCreateProps): ReactElement => {
   const onSubmit = () => {
     console.log("Submit the form");
   };
@@ -20,6 +24,7 @@ const BlogCreate = (): ReactElement => {
           <TextFormikField name="title" label="Blog Title" />
           <TextFormikField name="content" label="Blog content" />
           <Button type="submit" label="Add" />
+          <Button type="button" label="Cancel" onClick={onCancel} />
         </Form>
       </div>
     </Formik>

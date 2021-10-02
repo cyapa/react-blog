@@ -12,15 +12,18 @@ const StyledButton = styled.button`
 
 type ButtonType = "button" | "submit";
 
-type ButtonProps = Readonly<{
-  label: string;
-  type: ButtonType;
-}>;
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
+  Readonly<{
+    label: string;
+    type: ButtonType;
+  }>;
 
-const Button = ({ label, type }: ButtonProps): ReactElement => {
+const Button = ({ label, type, ...props }: ButtonProps): ReactElement => {
   return (
     <StyledButton>
-      <button type={type}>{label}</button>
+      <button type={type} {...props}>
+        {label}
+      </button>
     </StyledButton>
   );
 };
