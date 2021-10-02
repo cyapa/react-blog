@@ -25,14 +25,14 @@ const BlogPage = (): ReactElement => {
     <div className="grid grid-cols-2 gap-4">
       <div className="my-5">
         <div className="">
-          <Button type="button" label="Create" onClick={onAddClick} />
+          <Button
+            type="button"
+            label="Create a new blog"
+            onClick={onAddClick}
+          />
         </div>
 
-        {actionType === "blog_add" && (
-          <div className="border-2 border-gray-200">
-            <BlogCreate onCancel={onCancelClick} />
-          </div>
-        )}
+        {actionType === "blog_add" && <BlogCreate onCancel={onCancelClick} />}
       </div>
 
       <div className="my-5">

@@ -9,10 +9,10 @@ type BlogPostProps = Readonly<{
 
 const BlogList = ({ blogs }: BlogPostProps): ReactElement => {
   return (
-    <div className="text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+    <div className="">
       <div className="divide-y divide-gray-400">
-        <div className="">
-          <p>{`Number of blogs posted : ${blogs.length}`}</p>
+        <div className="text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+          <span>{`Number of blogs posted : ${blogs.length}`}</span>
         </div>
 
         <div className="my-5 py-5 tt">

@@ -1,16 +1,16 @@
 import React, { ReactElement } from "react";
 import styled from "styled-components";
 
-const StyledButton = styled.button`
+type ButtonType = "button" | "submit";
+
+const StyledButton = styled.button<{ $type?: ButtonType }>`
   background: transparent;
   border-radius: 3px;
-  border: 2px solid palevioletred;
-  color: palevioletred;
+  border: 2px solid #db7093;
+  color: #db7093;
   margin: 0 1em;
   padding: 0.25em 1em;
 `;
-
-type ButtonType = "button" | "submit";
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
   Readonly<{

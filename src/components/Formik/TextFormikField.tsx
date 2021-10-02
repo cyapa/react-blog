@@ -6,12 +6,12 @@ const Input = styled.input.attrs(() => ({
   type: "text",
   size: "1em",
 }))`
-  color: palevioletred;
+  color: #383636;
   font-size: 1em;
-  border: 2px solid palevioletred;
+  border: 2px solid #30850c;
   border-radius: 5px;
-  margin: 1em;
   padding: 1em;
+  width: 100%;
 `;
 
 type TextFormikFieldProps = Readonly<{
@@ -26,11 +26,13 @@ const TextField = ({
   const validationError =
     getIn(form.touched, field.name) && getIn(form.errors, field.name);
   return (
-    <div>
+    <div className="mx-5">
       <div>
         <Input type="text" placeholder={label} {...field} />
       </div>
-      {!!validationError && <div>{validationError}</div>}
+      {!!validationError && (
+        <div className="my-2 text-red-600">{validationError}</div>
+      )}
     </div>
   );
 };

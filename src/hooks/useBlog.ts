@@ -14,7 +14,22 @@ const useBlog = (): Readonly<{
       if (data) {
         setBlogs(data);
       } else {
-        setBlogs([]);
+        setBlogs([
+          {
+            id: "00001",
+            title: "Blog 1",
+            content: "Blog content",
+            ctime: new Date(2021, 1, 1),
+            mtime: new Date(2021, 1, 1),
+          },
+          {
+            id: "00002",
+            title: "Blog 2",
+            content: "This is blog two",
+            ctime: new Date(2020, 1, 1),
+            mtime: new Date(2020, 1, 1),
+          },
+        ]);
       }
     };
 
