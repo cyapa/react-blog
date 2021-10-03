@@ -2,6 +2,9 @@
   "name": "react-blog",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "14.x"
+  },
   "dependencies": {
     "@craco/craco": "^6.3.0",
     "@types/jest": "^26.0.24",
