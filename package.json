@@ -50,8 +50,8 @@
     "prettier": "^2.0.5"
   },
   "scripts": {
-    "start":"react-scripts start",
-    "build":"react-scripts build",
+    "start":"node --max_old_space_size=2560 node_modules/.bin/react-scripts start",
+    "build":"node --max_old_space_size=2560 node_modules/.bin/react-scripts build",
     "start_local": "craco start",
     "build_local": "craco build",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src",
