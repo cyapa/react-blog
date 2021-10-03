@@ -50,8 +50,10 @@
     "prettier": "^2.0.5"
   },
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
+    "start":"react-scripts start",
+    "build":"react-scripts build",
+    "start_local": "craco start",
+    "build_local": "craco build",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src",
     "types": "tsc --noUnusedLocals"
   },
