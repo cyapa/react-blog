@@ -27,6 +27,7 @@
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "formik": "^2.2.9",
     "install": "^0.13.0",
+    "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "postcss": "7",
     "prettier": "^2.0.5",

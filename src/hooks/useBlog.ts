@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import * as lodash from "lodash";
 
 import BlogService from "../services/BlogService";
 import type { Blog, UnsavedBlog } from "../types";
@@ -16,7 +17,12 @@ const useBlog = (): Readonly<{
     const fetchBlogs = async (): Promise<void> => {
       const { data } = await BlogService.getBlogs();
       if (data) {
-        setBlogs(data);
+        const orderedBlogs = lodash.orderBy(
+          data || [],
+          (blog) => [blog.mtime],
+          "asc"
+        );
+        setBlogs(orderedBlogs);
       } else {
         setBlogs([]);
       }
