@@ -2,6 +2,7 @@ import React, { ReactElement, useState } from "react";
 
 import Button from "../../components/Button";
 import useBlog from "../../hooks/useBlog";
+import { UnsavedBlog } from "../../types";
 import BlogCreate from "./BlogCreate";
 import BlogList from "./BlogList";
 
@@ -21,6 +22,11 @@ const BlogPage = (): ReactElement => {
     setActionType(undefined);
   };
 
+  const onFormSubmit = async (unsavedBlog: UnsavedBlog): Promise<void> => {
+    await addBlog(unsavedBlog);
+    setActionType(undefined);
+  };
+
   return (
     <div className="grid grid-cols-2 gap-4">
       <div className="my-5">
@@ -33,7 +39,7 @@ const BlogPage = (): ReactElement => {
         </div>
 
         {actionType === "blog_add" && (
-          <BlogCreate onCancel={onCancelClick} onSubmit={addBlog} />
+          <BlogCreate onCancel={onCancelClick} onSubmit={onFormSubmit} />
         )}
       </div>
 
