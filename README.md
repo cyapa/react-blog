@@ -1,15 +1,30 @@
-# Getting Started with Create React App
+# React blog app by Chathura Yapa
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Blog management tool
 
-## Available Scripts
+## Requirements to run 
+- **NPM Version** atleast `6.14.7`
+- **[API Server](https://github.com/cyapa/react-blog-api):** The Blog API up and running
 
-In the project directory, you can run:
 
-### `yarn start`
+## How to run the application in production
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Both the App & Server are deployed in **[Heroku](http://www.heroku.com/):**
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+App URL : https://react-blog-cyapa.herokuapp.com
+
+Server API URL: https://react-blog-cyapa-api.herokuapp.com/docs
+
+
+
+## How to run the application in local machine
+
+1. Clone the Server repo from GitHub and from root directory run `pip install -r requirements.txt` to install the dependancies. 
+
+    Then run `uvicorn main:app --reload` to host the API in local machine. The documentation is available on [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+
+2. Clone the App repo from Github and in root directory run `yarn` to install the dependancies. 
+
+    Then with `yarn start` The app will run in in [http://ocalhost:3000](http://ocalhost:3000)
+
+3. In order to connect the API with the Server running in local machine, the *API_PREFIX* should be changed in API configuration: [https://github.com/cyapa/react-blog/blob/master/src/services/BlogService.ts](https://github.com/cyapa/react-blog/blob/master/src/services/BlogService.ts) to `http://127.0.0.1:8000`
