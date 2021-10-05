@@ -28,3 +28,13 @@ Server API URL: https://react-blog-cyapa-api.herokuapp.com/docs
     Then with `yarn start` The app will run in in [http://ocalhost:3000](http://ocalhost:3000)
 
 3. In order to connect the API with the Server running in local machine, the *API_PREFIX* should be changed in API configuration: [https://github.com/cyapa/react-blog/blob/master/src/services/BlogService.ts](https://github.com/cyapa/react-blog/blob/master/src/services/BlogService.ts) to `http://127.0.0.1:8000`
+
+
+## Special notes
+
+ - I did not spend too much time providing the perfect User interface with richer stylings. Hope that's okay
+ - The linting on server side is not yet configured
+ - KMS is not configured to store secret keys such as database connections
+ - If you require any additional information please feel free to reach out to me
+
+
