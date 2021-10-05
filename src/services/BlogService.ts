@@ -3,7 +3,7 @@ import axios from "axios";
 import { Blog, UnsavedBlog } from "../types";
 import { APIResult } from "./types";
 
-const API_PREFIX = "http://127.0.0.1:8000";
+const API_PREFIX = "https://react-blog-cyapa-api.herokuapp.com";
 
 const _getErrorMessage = (): string => {
   return "Error in blogService";
