@@ -1,4 +1,5 @@
 import React, { ReactElement } from "react";
+import moment from "moment";
 import styled from "styled-components";
 
 import Button from "../../components/Button";
@@ -22,7 +23,6 @@ const BlogCard = ({ blog, removeBlog }: BlogCardProps): ReactElement => {
   const onDeleteClick = async (): Promise<void> => {
     await removeBlog(blog.id);
   };
-
   return (
     <StyledBlog>
       <div className="">
@@ -45,11 +45,11 @@ const BlogCard = ({ blog, removeBlog }: BlogCardProps): ReactElement => {
         <div className="pt-3 grid grid-cols-2 gap-2 my-5 text-base text-gray-700">
           <div>
             <span className="mr-3">Created:</span>
-            <span>{blog.ctime.toDateString()}</span>
+            <span>{moment(blog.ctime).format("DD-MM-YYYY")}</span>
           </div>
           <div>
             <span className="mr-3">Modified:</span>
-            <span>{blog.ctime.toDateString()}</span>
+            <span>{moment(blog.mtime).format("DD-MM-YYYY")}</span>
           </div>
         </div>
       </div>

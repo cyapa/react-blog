@@ -3,6 +3,8 @@ import axios from "axios";
 import { Blog, UnsavedBlog } from "../types";
 import { APIResult } from "./types";
 
+const API_PREFIX = "http://127.0.0.1:8000";
+
 const _getErrorMessage = (): string => {
   return "Error in blogService";
 };
@@ -46,7 +48,7 @@ const removeBlog = async (blogId: string): Promise<APIResult<null>> => {
 
 const getBlogs = async (): Promise<APIResult<ReadonlyArray<Blog>>> => {
   try {
-    return await axios.get("https://test-get-api");
+    return await axios.get(`${API_PREFIX}/blogs`);
   } catch {
     return {
       data: null,
