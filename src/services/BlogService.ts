@@ -13,7 +13,7 @@ const addBlog = async (
   unsavedBlog: UnsavedBlog
 ): Promise<APIResult<string>> => {
   try {
-    return await axios.post(`https://test-create-api`, unsavedBlog);
+    return await axios.post(`${API_PREFIX}/blog`, unsavedBlog);
   } catch {
     return {
       data: null,
@@ -37,7 +37,7 @@ const editBlog = async (
 
 const removeBlog = async (blogId: string): Promise<APIResult<null>> => {
   try {
-    return await axios.delete(`https://test-delete-api/${blogId}`);
+    return await axios.delete(`${API_PREFIX}/blog/${blogId}`);
   } catch {
     return {
       data: null,
