@@ -34,9 +34,8 @@ Server API URL: https://react-blog-cyapa-api.herokuapp.com/docs
 
 ## Special notes
 
- - I did not spend too much time providing the perfect User interface with richer stylings. Hope that's okay
+ - Did not spend too much time providing the perfect User interface with richer stylings
  - The linting on server side is not yet configured
  - KMS is not configured to store secret keys such as database connections
- - If you require any additional information please feel free to reach out to me
 
 
