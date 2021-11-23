@@ -9,9 +9,7 @@ Blog management tool
 
 ## How to run the application in production
 
-Both the App & Server are deployed in **[Heroku](http://www.heroku.com/):** 
-
-Currently not deployed in Heroku, Please run the app in local :)
+Both the App & Server are deployed in **[Heroku](http://www.heroku.com/):** (Currently not deployed in Heroku, Please run the app in local :))
 
 App URL : https://react-blog-cyapa.herokuapp.com
 
