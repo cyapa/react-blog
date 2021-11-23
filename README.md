@@ -11,9 +11,9 @@ Blog management tool
 
 Both the App & Server are deployed in **[Heroku](http://www.heroku.com/):** (Currently not deployed in Heroku, Please run the app in local :))
 
-~~App URL : https://react-blog-cyapa.herokuapp.com
+~~App URL : https://react-blog-cyapa.herokuapp.com~~
 
-~~Server API URL: https://react-blog-cyapa-api.herokuapp.com/docs
+~~Server API URL: https://react-blog-cyapa-api.herokuapp.com/docs~~
 
 
 
