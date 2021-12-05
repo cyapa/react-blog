@@ -1,9 +1,10 @@
 import axios from "axios";
 
-import { Blog, UnsavedBlog } from "../types";
+import { Blog, BlogFilter, UnsavedBlog } from "../types";
+import { toSnakeCaseKeys } from "../utils/objectUtils";
 import { APIResult } from "./types";
 
-const API_PREFIX = "https://react-blog-cyapa-api.herokuapp.com";
+const API_PREFIX = "http://127.0.0.1:8181";
 
 const _getErrorMessage = (): string => {
   return "Error in blogService";
@@ -46,9 +47,13 @@ const removeBlog = async (blogId: string): Promise<APIResult<null>> => {
   }
 };
 
-const getBlogs = async (): Promise<APIResult<ReadonlyArray<Blog>>> => {
+const getBlogs = async (
+  blogFilter: BlogFilter
+): Promise<APIResult<ReadonlyArray<Blog>>> => {
   try {
-    return await axios.get(`${API_PREFIX}/blogs`);
+    return await axios.get(`${API_PREFIX}/blogs`, {
+      params: toSnakeCaseKeys(blogFilter),
+    });
   } catch {
     return {
       data: null,

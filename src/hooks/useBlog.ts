@@ -15,7 +15,7 @@ const useBlog = (): Readonly<{
 
   useEffect(() => {
     const fetchBlogs = async (): Promise<void> => {
-      const { data } = await BlogService.getBlogs();
+      const { data } = await BlogService.getBlogs({ isDeleted: false });
       if (data) {
         const orderedBlogs = lodash.orderBy(
           data || [],
