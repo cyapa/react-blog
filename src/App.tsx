@@ -1,14 +1,22 @@
 import React, { ReactElement } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import BlogPage from "./scenes/Blog/BlogPage";
+import { APP_BASE, BLOG } from "./routes";
+import BlogHome from "./scenes/Blog/BlogPage";
+
+const BlogRoute = (): ReactElement => {
+  return (
+    <Routes>
+      <Route path={BLOG.HOME} element={<BlogHome />} />
+    </Routes>
+  );
+};
 
 function App(): ReactElement {
   return (
-    <div className="container mx-auto">
-      <div>
-        <BlogPage />
-      </div>
-    </div>
+    <BrowserRouter basename={APP_BASE}>
+      <BlogRoute />
+    </BrowserRouter>
   );
 }
 
