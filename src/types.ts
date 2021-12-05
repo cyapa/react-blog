@@ -10,3 +10,8 @@ export type UnsavedBlog = Readonly<{
   title: string;
   content: string;
 }>;
+
+export type BlogFilter = Readonly<{
+  id?: number;
+  isDeleted?: boolean;
+}>;
