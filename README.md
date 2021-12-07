@@ -2,7 +2,7 @@
 
 Blog management tool
 
-### Features
+## Features
 
 - Blogs
     - [x] Create a new blog
