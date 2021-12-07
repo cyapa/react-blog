@@ -2,6 +2,15 @@
 
 Blog management tool
 
+### Features
+
+- Blogs
+    [x] Create a new blog
+    [x] Delete a blog
+    [ ] List blogs
+    
+
+
 ## Requirements to run 
 - **NPM Version** atleast `6.14.7`
 - **[API Server](https://github.com/cyapa/react-blog-api):** The Blog API up and running
