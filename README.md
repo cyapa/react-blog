@@ -5,9 +5,9 @@ Blog management tool
 ### Features
 
 - Blogs
-    [x] Create a new blog
-    [x] Delete a blog
-    [ ] List blogs
+    - [x] Create a new blog
+    - [x] Delete a blog
+    - [ ] List blogs
     
 
 
