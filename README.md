@@ -18,6 +18,12 @@ Blog management tool
     - [ ] Like/Dislike blogs
     - [ ] Like/Dislike blogs
 
+- Unit Testing
+    - [ ] Services
+    - [ ] Hooks
+    - [ ] Components
+
+
 ## Requirements to run 
 - **NPM Version** atleast `6.14.7`
 - **[API Server](https://github.com/cyapa/react-blog-api):** The Blog API up and running
