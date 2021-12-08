@@ -8,13 +8,14 @@ import {
 } from "react-router-dom";
 
 import Button from "../../components/Button";
-import useBlog from "../../hooks/useBlog";
+import useBlogs from "../../hooks/useBlogs";
 import { BLOG } from "../../routes";
 import BlogCreate from "./BlogCreate";
 import BlogList from "./BlogList";
+import DetailedBlog from "./DetailedBlog";
 
 const BlogPage = (route: RouteComponentProps): ReactElement => {
-  const { blogs, isLoading, addBlog, removeBlog } = useBlog();
+  const { blogs, isLoadingBlogs, addBlog, removeBlog } = useBlogs();
 
   const onAddNewBLogButtonClick = () => {
     route.history.push(generatePath(BLOG.CREATE));
@@ -29,7 +30,7 @@ const BlogPage = (route: RouteComponentProps): ReactElement => {
       <Switch>
         <Route exact path={BLOG.HOME}>
           <div className="my-5">
-            {!isLoading ? (
+            {!isLoadingBlogs ? (
               <BlogList blogs={blogs} removeBlog={removeBlog} />
             ) : (
               "Loading..."
@@ -48,6 +49,11 @@ const BlogPage = (route: RouteComponentProps): ReactElement => {
         <Route exact path={BLOG.CREATE}>
           <div className="my-5">
             <BlogCreate redirectToHome={redirectToHome} addBlog={addBlog} />
+          </div>
+        </Route>
+        <Route exact path={BLOG.BLOG}>
+          <div className="my-5">
+            <DetailedBlog />
           </div>
         </Route>
       </Switch>

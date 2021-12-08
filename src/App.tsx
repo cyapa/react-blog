@@ -7,7 +7,11 @@ import BlogHome from "./scenes/Blog/BlogPage";
 const BlogRoute = (): ReactElement => {
   return (
     <Switch>
-      <Route exact path={[BLOG.CREATE, BLOG.HOME]} component={BlogHome} />
+      <Route
+        exact
+        path={[BLOG.CREATE, BLOG.HOME, BLOG.BLOG]}
+        component={BlogHome}
+      />
     </Switch>
   );
 };
