@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { Blog, BlogFilter, UnsavedBlog } from "../types";
+import { Blog, BlogFilter, BlogPartialUpdate, UnsavedBlog } from "../types";
 import { toSnakeCaseKeys } from "../utils/objectUtils";
 import { APIResult, CreateResult } from "./types";
 
@@ -23,11 +23,12 @@ const addBlog = async (
   }
 };
 
+//TODO: Not yet implemented
 const editBlog = async (
-  editedBlog: UnsavedBlog
+  blogPartialUpdate: BlogPartialUpdate
 ): Promise<APIResult<Readonly<Blog>>> => {
   try {
-    return await axios.patch(`https://test-edit-api`, editedBlog);
+    return await axios.patch(`https://test-edit-api`, blogPartialUpdate);
   } catch {
     return {
       data: null,
