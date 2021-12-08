@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import * as lodash from "lodash";
+import lodash from "lodash";
 
 import BlogService from "../services/BlogService";
 import type { Blog, UnsavedBlog } from "../types";
@@ -36,7 +36,6 @@ const useBlogs = (): Readonly<{
     if (!data) {
       return;
     }
-    console.log(data);
     setBlogs([
       ...blogs,
       {

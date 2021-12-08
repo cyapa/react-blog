@@ -7,7 +7,6 @@ export type APIResult<T = null, U = null> = Readonly<{
   error: U | APIError | null;
 }>;
 
-
 export type CreateResult = Readonly<{
-  id:number
+  id:number;
 }>;
