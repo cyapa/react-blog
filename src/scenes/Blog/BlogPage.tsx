@@ -1,57 +1,58 @@
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement } from "react";
+import {
+  generatePath,
+  Route,
+  RouteComponentProps,
+  Switch,
+  withRouter,
+} from "react-router-dom";
 
 import Button from "../../components/Button";
 import useBlog from "../../hooks/useBlog";
-import { UnsavedBlog } from "../../types";
+import { BLOG } from "../../routes";
 import BlogCreate from "./BlogCreate";
 import BlogList from "./BlogList";
 
-type ActionType = "blog_add" | "blog_delete";
+const BlogPage = (route: RouteComponentProps): ReactElement => {
+  const { blogs, isLoading, removeBlog } = useBlog(true);
 
-const BlogPage = (): ReactElement => {
-  const { blogs, isLoading, addBlog, removeBlog } = useBlog();
-  const [actionType, setActionType] = useState<ActionType | undefined>(
-    undefined
-  );
-
-  const onAddClick = () => {
-    setActionType("blog_add");
+  const onAddNewBLogButtonClick = () => {
+    route.history.push(generatePath(BLOG.CREATE));
   };
 
-  const onCancelClick = () => {
-    setActionType(undefined);
-  };
-
-  const onFormSubmit = async (unsavedBlog: UnsavedBlog): Promise<void> => {
-    await addBlog(unsavedBlog);
-    setActionType(undefined);
+  const redirectToHome = () => {
+    route.history.push(generatePath(BLOG.HOME));
   };
 
   return (
     <div className="grid grid-cols-2 gap-4">
-      <div className="my-5">
-        <div className="">
-          <Button
-            type="button"
-            label="Create a new blog"
-            onClick={onAddClick}
-          />
-        </div>
-
-        {actionType === "blog_add" && (
-          <BlogCreate onCancel={onCancelClick} onSubmit={onFormSubmit} />
-        )}
-      </div>
-
-      <div className="my-5">
-        {!isLoading ? (
-          <BlogList blogs={blogs} removeBlog={removeBlog} />
-        ) : (
-          "Loading..."
-        )}
-      </div>
+      <Switch>
+        <Route exact path={BLOG.HOME}>
+          <div className="my-5">
+            {!isLoading ? (
+              <BlogList blogs={blogs} removeBlog={removeBlog} />
+            ) : (
+              "Loading..."
+            )}
+          </div>
+          <div className="my-5">
+            <div className="">
+              <Button
+                type="button"
+                label="Create a new blog"
+                onClick={onAddNewBLogButtonClick}
+              />
+            </div>
+          </div>
+        </Route>
+        <Route exact path={BLOG.CREATE}>
+          <div className="my-5">
+            <BlogCreate redirectToHome={redirectToHome} />
+          </div>
+        </Route>
+      </Switch>
     </div>
   );
 };
 
-export default BlogPage;
+export default withRouter(BlogPage);

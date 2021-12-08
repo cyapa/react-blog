@@ -3,15 +3,21 @@ import { Form, Formik } from "formik";
 
 import Button from "../../components/Button";
 import TextFormikField from "../../components/Formik/TextFormikField";
+import useBlog from "../../hooks/useBlog";
 import { UnsavedBlog } from "../../types";
 import blogSchema, { INITIAL_VALUES } from "../../validators/blogSchema";
 
 type BlogCreateProps = Readonly<{
-  onSubmit: (unsavedBlog: UnsavedBlog) => Promise<void>;
-  onCancel: () => void;
+  redirectToHome: () => void;
 }>;
 
-const BlogCreate = ({ onCancel, onSubmit }: BlogCreateProps): ReactElement => {
+const BlogCreate = ({ redirectToHome }: BlogCreateProps): ReactElement => {
+  const { addBlog } = useBlog();
+
+  const onSubmit = async (unsavedBlog: UnsavedBlog): Promise<void> => {
+    await addBlog(unsavedBlog);
+  };
+
   return (
     <Formik
       onSubmit={onSubmit}
@@ -28,7 +34,7 @@ const BlogCreate = ({ onCancel, onSubmit }: BlogCreateProps): ReactElement => {
           </div>
           <div className="my-5">
             <Button type="submit" label="Add" />
-            <Button type="button" label="Cancel" onClick={onCancel} />
+            <Button type="button" label="Cancel" onClick={redirectToHome} />
           </div>
         </Form>
       </div>

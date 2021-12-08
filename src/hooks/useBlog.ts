@@ -4,7 +4,9 @@ import * as lodash from "lodash";
 import BlogService from "../services/BlogService";
 import type { Blog, UnsavedBlog } from "../types";
 
-const useBlog = (): Readonly<{
+const useBlog = (
+  fetch?: boolean
+): Readonly<{
   blogs: ReadonlyArray<Blog>;
   isLoading: boolean;
   addBlog: (unsavedBlog: UnsavedBlog) => Promise<void>;
@@ -28,8 +30,9 @@ const useBlog = (): Readonly<{
       }
       setLoadingBlogs(false);
     };
-
-    fetchBlogs();
+    if (fetch) {
+      fetchBlogs();
+    }
   }, []);
 
   const addBlog = async (unsavedBlog: UnsavedBlog): Promise<void> => {

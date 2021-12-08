@@ -1,14 +1,14 @@
 import React, { ReactElement } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import { APP_BASE, BLOG } from "./routes";
 import BlogHome from "./scenes/Blog/BlogPage";
 
 const BlogRoute = (): ReactElement => {
   return (
-    <Routes>
-      <Route path={BLOG.HOME} element={<BlogHome />} />
-    </Routes>
+    <Switch>
+      <Route exact path={[BLOG.CREATE, BLOG.HOME]} component={BlogHome} />
+    </Switch>
   );
 };
 
