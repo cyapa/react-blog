@@ -3,27 +3,31 @@ import { useEffect, useState } from "react";
 import BlogService from "../services/BlogService";
 import type { Blog } from "../types";
 
+type BlogStatusType = "loading" | "not_found" | "found";
+
 const useBlog = (
   blogId: number
 ): Readonly<{
   blog: Blog | undefined;
-  isLoadingBlog: boolean;
+  blogStatus: BlogStatusType;
 }> => {
   const [blog, setBlog] = useState<Blog>();
-  const [isLoadingBlog, setLoadingBlog] = useState(true);
+  const [blogStatus, setBlogStatus] = useState<BlogStatusType>("loading");
 
   useEffect(() => {
     const fetchBlog = async (): Promise<void> => {
       const { data } = await BlogService.getBlogs({ id: blogId });
-      if (data) {
+      if (data?.[0]) {
         setBlog(data[0]);
+        setBlogStatus("found");
+        return;
       }
-      setLoadingBlog(false);
+      setBlogStatus("not_found");
     };
     fetchBlog();
   }, []);
 
-  return { blog, isLoadingBlog };
+  return { blog, blogStatus };
 };
 
 export default useBlog;
