@@ -1,5 +1,5 @@
 export type Blog = Readonly<{
-  id: string;
+  id: number;
   title: string;
   content: string;
   ctime: Date;

@@ -2,7 +2,7 @@ import axios from "axios";
 
 import { Blog, BlogFilter, UnsavedBlog } from "../types";
 import { toSnakeCaseKeys } from "../utils/objectUtils";
-import { APIResult } from "./types";
+import { APIResult, CreateResult } from "./types";
 
 const API_PREFIX = "http://127.0.0.1:8181";
 
@@ -12,7 +12,7 @@ const _getErrorMessage = (): string => {
 
 const addBlog = async (
   unsavedBlog: UnsavedBlog
-): Promise<APIResult<string>> => {
+): Promise<APIResult<CreateResult>> => {
   try {
     return await axios.post(`${API_PREFIX}/blog`, unsavedBlog);
   } catch {
@@ -36,7 +36,7 @@ const editBlog = async (
   }
 };
 
-const removeBlog = async (blogId: string): Promise<APIResult<null>> => {
+const removeBlog = async (blogId: number): Promise<APIResult<null>> => {
   try {
     return await axios.delete(`${API_PREFIX}/blog/${blogId}`);
   } catch {

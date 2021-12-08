@@ -8,7 +8,7 @@ const useBlogs = (): Readonly<{
   blogs: ReadonlyArray<Blog>;
   isLoadingBlogs: boolean;
   addBlog: (unsavedBlog: UnsavedBlog) => Promise<void>;
-  removeBlog: (blogId: string) => Promise<void>;
+  removeBlog: (blogId: number) => Promise<void>;
 }> => {
   const [blogs, setBlogs] = useState<ReadonlyArray<Blog>>([]);
   const [isLoadingBlogs, setLoadingBlogs] = useState(true);
@@ -36,10 +36,11 @@ const useBlogs = (): Readonly<{
     if (!data) {
       return;
     }
+    console.log(data);
     setBlogs([
       ...blogs,
       {
-        id: data,
+        id: data.id,
         title: unsavedBlog.title,
         content: unsavedBlog.content,
         ctime: new Date(),
@@ -48,8 +49,7 @@ const useBlogs = (): Readonly<{
     ]);
   };
 
-  //TODO: Change blogId type to number
-  const removeBlog = async (blogId: string): Promise<void> => {
+  const removeBlog = async (blogId: number): Promise<void> => {
     const { data } = await BlogService.removeBlog(blogId);
     if (!data) {
       return;

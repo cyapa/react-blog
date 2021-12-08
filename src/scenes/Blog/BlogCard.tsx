@@ -18,7 +18,7 @@ const StyledBlog = styled.div`
 
 type BlogCardProps = Readonly<{
   blog: Blog;
-  removeBlog: (blogId: string) => Promise<void>;
+  removeBlog: (blogId: number) => Promise<void>;
 }>;
 
 const BlogCard = ({ blog, removeBlog }: BlogCardProps): ReactElement => {

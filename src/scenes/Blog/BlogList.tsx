@@ -5,7 +5,7 @@ import BlogCard from "./BlogCard";
 
 type BlogPostProps = Readonly<{
   blogs: ReadonlyArray<Blog>;
-  removeBlog: (blogId: string) => Promise<void>;
+  removeBlog: (blogId: number) => Promise<void>;
 }>;
 
 const BlogList = ({ blogs, removeBlog }: BlogPostProps): ReactElement => {
