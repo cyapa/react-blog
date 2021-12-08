@@ -3,19 +3,21 @@ import { Form, Formik } from "formik";
 
 import Button from "../../components/Button";
 import TextFormikField from "../../components/Formik/TextFormikField";
-import useBlog from "../../hooks/useBlog";
 import { UnsavedBlog } from "../../types";
 import blogSchema, { INITIAL_VALUES } from "../../validators/blogSchema";
 
 type BlogCreateProps = Readonly<{
   redirectToHome: () => void;
+  addBlog: (unsavedBlog: UnsavedBlog) => Promise<void>;
 }>;
 
-const BlogCreate = ({ redirectToHome }: BlogCreateProps): ReactElement => {
-  const { addBlog } = useBlog();
-
+const BlogCreate = ({
+  redirectToHome,
+  addBlog,
+}: BlogCreateProps): ReactElement => {
   const onSubmit = async (unsavedBlog: UnsavedBlog): Promise<void> => {
     await addBlog(unsavedBlog);
+    redirectToHome();
   };
 
   return (

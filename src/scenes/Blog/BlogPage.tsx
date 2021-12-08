@@ -14,7 +14,7 @@ import BlogCreate from "./BlogCreate";
 import BlogList from "./BlogList";
 
 const BlogPage = (route: RouteComponentProps): ReactElement => {
-  const { blogs, isLoading, removeBlog } = useBlog(true);
+  const { blogs, isLoading, addBlog, removeBlog } = useBlog();
 
   const onAddNewBLogButtonClick = () => {
     route.history.push(generatePath(BLOG.CREATE));
@@ -47,7 +47,7 @@ const BlogPage = (route: RouteComponentProps): ReactElement => {
         </Route>
         <Route exact path={BLOG.CREATE}>
           <div className="my-5">
-            <BlogCreate redirectToHome={redirectToHome} />
+            <BlogCreate redirectToHome={redirectToHome} addBlog={addBlog} />
           </div>
         </Route>
       </Switch>
