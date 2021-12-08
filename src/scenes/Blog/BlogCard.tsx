@@ -1,8 +1,10 @@
 import React, { ReactElement } from "react";
 import moment from "moment";
+import { generatePath, useHistory } from "react-router-dom";
 import styled from "styled-components";
 
 import Button from "../../components/Button";
+import { BLOG } from "../../routes";
 import { Blog } from "../../types";
 
 const StyledBlog = styled.div`
@@ -20,6 +22,12 @@ type BlogCardProps = Readonly<{
 }>;
 
 const BlogCard = ({ blog, removeBlog }: BlogCardProps): ReactElement => {
+  const history = useHistory();
+
+  const onTitleClick = () => {
+    history.push(generatePath(BLOG.BLOG, { blogId: blog.id }));
+  };
+
   const onDeleteClick = async (): Promise<void> => {
     await removeBlog(blog.id);
   };
@@ -28,7 +36,10 @@ const BlogCard = ({ blog, removeBlog }: BlogCardProps): ReactElement => {
       <div className="">
         <div className="grid grid-cols-2  grid-rows-3 relative ">
           <div>
-            <span className="text-base text-pink-500 hover:text-pink-700">
+            <span
+              className="text-base text-pink-500 hover:text-pink-700"
+              onClick={onTitleClick}
+            >
               {blog.title}
             </span>
           </div>
