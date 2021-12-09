@@ -25,7 +25,7 @@ const useBlog = (
       setBlogStatus("not_found");
     };
     fetchBlog();
-  }, []);
+  }, [blogId]);
 
   return { blog, blogStatus };
 };
