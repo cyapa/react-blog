@@ -8,5 +8,5 @@ export type APIResult<T = null, U = null> = Readonly<{
 }>;
 
 export type CreateResult = Readonly<{
-  id:number;
+  id: number;
 }>;

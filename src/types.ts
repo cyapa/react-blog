@@ -6,7 +6,6 @@ export type Blog = Readonly<{
   mtime: Date;
 }>;
 
-
 export type BlogPartialUpdate = Readonly<{
   title?: string;
   content?: string;

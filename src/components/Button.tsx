@@ -3,13 +3,16 @@ import styled from "styled-components";
 
 type ButtonType = "button" | "submit";
 
-const StyledButton = styled.button<{ $type?: ButtonType }>`
-  background: transparent;
-  border-radius: 3px;
-  border: 2px solid #db7093;
-  color: #db7093;
-  margin: 0 1em;
-  padding: 0.25em 1em;
+//TODO: Remove styled.button and work on removing <button> cannot appear as a descendant of <button> console warning
+const StyledButton = styled.button`
+  button {
+    background: transparent;
+    border-radius: 3px;
+    border: 2px solid #db7093;
+    color: #db7093;
+    margin: 0 1em;
+    padding: 0.25em 1em;
+  }
 `;
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
