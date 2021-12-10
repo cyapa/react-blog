@@ -17,17 +17,21 @@ const DetailedBlog = ({
     return <div>LOADING...</div>;
   }
 
-  //TODO: Create  a Not found UI
+  //TODO: Create a Not found UI
   if (blogStatus === "not_found") {
     return <div>BLOG NOT FOUND</div>;
   }
 
-  //TODO: Create  Detailed Blog UI
+  //TODO: Create a Detailed Blog UI
   if (blogStatus === "found" && blog) {
     return (
       <div className="">
-        <div>{blog.title}</div>
-        <div>{blog.content}</div>
+        <div>
+          <span className="text-xl text-pink-500">{blog.title}</span>
+        </div>
+        <div>
+          <span className="text-base">{blog.content}</span>
+        </div>
       </div>
     );
   }
