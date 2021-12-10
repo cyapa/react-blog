@@ -34,9 +34,13 @@ const BlogCreate = ({
           <div className="my-5">
             <TextFormikField name="content" label="Blog content*" />
           </div>
-          <div className="my-5">
-            <Button type="submit" label="Add" />
-            <Button type="button" label="Cancel" onClick={redirectToHome} />
+          <div className="my-5 flex items-stretch">
+            <div className="w-24">
+              <Button type="submit" label="Add" />
+            </div>
+            <div className="w-24">
+              <Button type="button" label="Cancel" onClick={redirectToHome} />
+            </div>
           </div>
         </Form>
       </div>

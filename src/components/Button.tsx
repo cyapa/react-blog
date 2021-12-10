@@ -3,8 +3,7 @@ import styled from "styled-components";
 
 type ButtonType = "button" | "submit";
 
-//TODO: Remove styled.button and work on removing <button> cannot appear as a descendant of <button> console warning
-const StyledButton = styled.button`
+const StyledButton = styled.div`
   button {
     background: transparent;
     border-radius: 3px;
